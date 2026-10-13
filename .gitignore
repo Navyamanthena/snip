@@ -1,0 +1,5 @@
+/snip
+*.exe
+coverage.out
+.DS_Store
+dump.rdb

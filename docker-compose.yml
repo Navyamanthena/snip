@@ -1,0 +1,17 @@
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports: ["6379:6379"]
+    volumes: [redis-data:/data]
+
+  snip:
+    build: .
+    environment:
+      REDIS_ADDR: redis:6379
+      BASE_URL: http://localhost:8080
+    ports: ["8080:8080"]
+    depends_on: [redis]
+
+volumes:
+  redis-data:
